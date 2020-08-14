@@ -12,7 +12,7 @@ $('.nav .a').mouseleave(function(){
 
 
 
-// 鼠标进入7个nana，对应下标的ul显示
+// 鼠标进入7个nana，对应下标的ul显示 //
 $('.nav .nana').mouseenter(function(){
     var num = $(this).index()
     $('.nav_items >.w> ul').eq(num).css('display','block').siblings().css('display','none')
