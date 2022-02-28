@@ -8,7 +8,8 @@
 <body>
   fdlsajfljfladsjflasjfsafd,dsafdsnadnfa
   <script>
-    navigator.mediaDevices.getUserMedia().then((data) => {
+    alert(2)
+    navigator.mediaDevices.getUserMedia({audio: true}).then((data) => {
       console.log('data',data);
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
