@@ -21,7 +21,10 @@
       });
       list.forEach((item, index) => {
         if(item.label == '') {
+          alert(item.label)
           item.text = '麦克风' + index + 1
+        } else {
+          alert(2)
         }
       })
       var d = document.getElementById('div')
