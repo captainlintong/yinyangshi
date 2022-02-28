@@ -11,15 +11,28 @@
   <div id="div">
 
   </div>
+
+
+
   <script>
-    alert(2)
     var ccc = ''
     navigator.mediaDevices.getUserMedia({audio: true}).then((data) => {
       console.log('data',data);
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
+      let list = res.filter((d) => {
+        return d.kind === 'audioinput' && d.deviceId;
+      });
+
+
+      var item = list.map(item => item.label)
+      console.log(item);
+
+
+
+
       var d = document.getElementById('div')
-      c = JSON.stringify(res)
+      c = JSON.stringify(item)
       d.innerHTML = c
     })
     })
