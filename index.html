@@ -8,9 +8,13 @@
 <body>
   fdlsajfljfladsjflasjfsafd,dsafdsnadnfa
   <script>
-    navigator.mediaDevices.enumerateDevices().then(res => {
+    navigator.mediaDevices.getUserMedia().then((data) => {
+      console.log('data',data);
+      navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
     })
+    })
+
   </script>
 </body>
 </html>
