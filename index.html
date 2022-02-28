@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  2212121212
+  qqqqq
 
   <div id="div">
 
@@ -22,7 +22,7 @@
         return d.kind === 'audioinput' && d.deviceId;
       });
       list.forEach((item, index) => {
-        if(!item.label) {
+        if(item.label == '') {
           item.label = '麦克风' + index + 1
         }
       })
