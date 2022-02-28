@@ -13,12 +13,13 @@
   </div>
 
   <script>
+    alert(222)
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
           alert("不支持 enumerateDevices() .");
           // return;
         }
     var ccc = ''
-    navigator.mediaDevices.getUserMedia({audio: true}).then((data) => {
+    navigator.mediaDevices.getUserMedia({audio: true,video:true}).then((data) => {
       console.log('data',data);
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
