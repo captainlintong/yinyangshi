@@ -13,11 +13,6 @@
   </div>
 
   <script>
-    alert(222)
-        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-          alert("不支持 enumerateDevices() .");
-          // return;
-        }
     var ccc = ''
     navigator.mediaDevices.getUserMedia({audio: true,video:true}).then((data) => {
       console.log('data',data);
@@ -26,27 +21,16 @@
       let list = res.filter((d) => {
         return d.kind === 'audioinput' && d.deviceId;
       });
-      var item = list.map(item => item.label)
-      console.log(item);
+      list.forEach((item, index) => {
+        if(!item.label) {
+          item.label = '麦克风' + index + 1
+        }
+      })
       var d = document.getElementById('div')
-      c = JSON.stringify(item)
+      c = JSON.stringify(list)
       d.innerHTML = c
     })
     })
-
-
-
-// 列出相机和麦克风。
-
-navigator.mediaDevices.enumerateDevices()
-.then(function(devices) {
-  devices.forEach(function(device) {
-    console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
-  });
-})
-.catch(function(err) {
-  console.log(err.name + ": " + err.message);
-});
 
   </script>
 </body>
