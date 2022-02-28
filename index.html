@@ -7,12 +7,20 @@
 </head>
 <body>
   fdlsajfljfladsjflasjfsafd,dsafdsnadnfa
+
+  <div id="div">
+
+  </div>
   <script>
     alert(2)
+    var ccc = ''
     navigator.mediaDevices.getUserMedia({audio: true}).then((data) => {
       console.log('data',data);
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
+      var d = document.getElementById('div')
+      c = JSON.stringify(res)
+      d.innerHTML = c
     })
     })
 
