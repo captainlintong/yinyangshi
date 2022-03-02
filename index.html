@@ -6,9 +6,8 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="div">
-
-  </div>
+  <div id="div"></div>
+  <div id="div2" style="color:red;"></div>
 
   <script>
     var ccc = ''
@@ -16,16 +15,18 @@
       console.log('data',data);
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
-      let list = res.filter((d) => {
-        return d.kind === 'audioinput' && d.deviceId;
-      });
-      list.forEach((item, index) => {
-        item.text = '麦克风'
-      })
+      let list = res
+      // let list = res.filter((d) => {
+      //   return d.kind === 'audioinput' && d.deviceId;
+      // });
+      // list.forEach((item, index) => {
+      //   item.text = '麦克风'
+      // })
       var d = document.getElementById('div')
       c = JSON.stringify(list)
-      alert(c)
       d.innerHTML = c
+      var d2 = document.getElementById('div2')
+      d2.innerHTML = list.length
     })
     })
 
