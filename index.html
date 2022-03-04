@@ -70,18 +70,25 @@
   </div>
 
   <script>
-
-let stream = await navigator.mediaDevices.getUserMedia({
+    function plays () {
+     navigator.mediaDevices.getUserMedia({
           video: true
         })
-        .catch((err) => {
-          return err;
-        });
-      if (stream.id && document.getElementById("live")) {
+        .then(res=> {
+          let stream = res
+          if (stream.id && document.getElementById("live")) {
         document.getElementById("live").srcObject = stream;
         document.getElementById("live").play()
         switchToCanvas()
       }
+        })
+        .catch((err) => {
+          return err;
+        });
+
+    }
+
+
 
     function switchToCanvas() {
       var video = document.getElementById("live");
