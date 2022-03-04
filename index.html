@@ -70,6 +70,19 @@
   </div>
 
   <script>
+
+let stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        })
+        .catch((err) => {
+          return err;
+        });
+      if (stream.id && document.getElementById("live")) {
+        document.getElementById("live").srcObject = stream;
+        document.getElementById("live").play()
+        switchToCanvas()
+      }
+
     function switchToCanvas() {
       var video = document.getElementById("live");
       var canvas = document.getElementById("myCanvas");
@@ -79,7 +92,7 @@
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       window.requestAnimationFrame(switchToCanvas);
     }
-    switchToCanvas()
+
 
     var btn = document.getElementById('btn')
     btn.onclick = function() {
