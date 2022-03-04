@@ -61,7 +61,7 @@
   </script> -->
 
   <div class="videoArea-container" id="a">
-    <video ref="liveRef" id="live" autoplay webkit-playsinline="true" playsinline="true"></video>
+    <video ref="liveRef" id="live" autoplay webkit-playsinline="true" playsinline="true" style="display:none;"></video>
     <canvas id="myCanvas"></canvas>
 
   </div>
@@ -79,7 +79,7 @@
           if (stream.id && document.getElementById("live")) {
         document.getElementById("live").srcObject = stream;
         document.getElementById("live").play()
-        // switchToCanvas()
+        switchToCanvas()
       }
         })
         .catch((err) => {
