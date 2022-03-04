@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-</head>
-<body>
-  <div id="div"></div>
-  <div id="div2" style="color:red;"></div>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .videoArea-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #131625;
+    height: 422px;
 
+  }
+  video {
+      width: 100%;
+      height: 100%;
+    }
+    canvas{width: 100%;height: 100%;}
+    .btn {
+      color: red;
+    }
+    .box {
+      /* width: 100vh;
+  height: 100vw;
+  transform: rotate(90deg);
+  transform-origin: 0% 100%;
+  position: relative;
+  top: -100vw;
+  left: 0; */
+  transform: rotate(90deg);
+  /* width: 100vh!important;
+  height: 100vw!important; */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="div"></div>
+  <div id="div2" style="color:red;"></div>
   <script>
     var ccc = ''
     navigator.mediaDevices.getUserMedia({audio: true,video:true}).then((data) => {
@@ -16,12 +50,6 @@
       navigator.mediaDevices.enumerateDevices().then(res => {
       console.log('res', res);
       let list = res
-      // let list = res.filter((d) => {
-      //   return d.kind === 'audioinput' && d.deviceId;
-      // });
-      // list.forEach((item, index) => {
-      //   item.text = '麦克风'
-      // })
       var d = document.getElementById('div')
       c = JSON.stringify(list)
       d.innerHTML = c
@@ -30,6 +58,36 @@
     })
     })
 
+  </script> -->
+
+  <div class="videoArea-container" id="a">
+    <video ref="liveRef" id="live" autoplay webkit-playsinline="true" playsinline="true" style="display:none;"></video>
+    <canvas id="myCanvas"></canvas>
+
+  </div>
+  <div id="btn" class="btn" style="color: red;">
+    旋转
+  </div>
+
+  <script>
+    function switchToCanvas() {
+      var video = document.getElementById("live");
+      var canvas = document.getElementById("myCanvas");
+      canvas.width = window.innerWidth * 4;  //获取屏幕宽度作为canvas的宽度  这个设置的越大，画面越清晰（相当于绘制的图像大，然后被css缩小）
+      canvas.height = window.innerHeight * 4;
+      var context = canvas.getContext("2d");
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      window.requestAnimationFrame(switchToCanvas);
+    }
+    switchToCanvas()
+
+    var btn = document.getElementById('btn')
+    btn.onclick = function() {
+      // alert(3)
+      var a = document.getElementById('myCanvas')
+      a.className = 'box'
+    }
   </script>
 </body>
+
 </html>
