@@ -39,6 +39,7 @@
     <script>
         const iframe = window.document.getElementById('iframe')
         document.getElementById('testBtn').addEventListener('click', () => {
+            document.querySelector('.testBox').style.display = 'none'
             iframe.setAttribute('src', document.getElementById('url').value)
         })
 
