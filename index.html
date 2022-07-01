@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ttdsds3</title>
+    <!-- 引入样式文件 -->
+<link
+rel="stylesheet"
+href="https://unpkg.com/vant@2.12/lib/index.css"
+/>
+
+<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+<script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
+<script src="https://unpkg.com/vant@2.12/lib/vant.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -40,6 +49,7 @@
 
     <iframe id="iframe" allowfullscreen allow="microphone;camera;midi;encrypted-media;"></iframe>
     <script>
+
         const iframe = window.document.getElementById('iframe')
         document.getElementById('testBtn').addEventListener('click', () => {
             document.querySelector('.testBox').style.display = 'none'
@@ -48,7 +58,18 @@
         window.addEventListener('message', (e) => {
             console.log(e);
             if(e.data && e.data.code == '000000')    {
-                alert('iframe已接收到登录失败的信息')
+                // vant.Toast('iframe已接收到登录失败的信息');
+                vant.Dialog.confirm({
+            message: '您已退出登录，是否重现登录',
+                            })
+                .then(() => {
+
+                })
+                .catch(() => {
+                    // on cancel
+                });
+
+                // alert('iframe已接收到登录失败的信息')
             }
         }, false)
 
